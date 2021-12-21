@@ -253,7 +253,7 @@ def main(_user,_passwd,min_1, max_1, a):
     if a:
         push('【小米运动步数修改】', result)
         push_wx(result)
-        run(result)
+        #run(result)
     else:
         print("此次修改结果不推送")
     return result
