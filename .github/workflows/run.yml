@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout codes
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11,需要repo和workflow权限
         
       - name: Update system and install zsh
         run: |
@@ -51,10 +53,10 @@ jobs:
       - name: 重置刷新时间
         run: |
           zsh random_cron.sh
-          git_pwd='${{ secrets.GIT_PWD }}'
+          #git_pwd='${{ secrets.GIT_PWD }}'
           git config --global user.name "ZKUII"
           git config --global user.email "zhangkuis@aliyun.com"
           git add .
           git commit -m '重置下次刷新时间'
-          git remote set-url origin http://ZKUII:${git_pwd}@github.com/ZKUII/mimotion.git
+          #git remote set-url origin http://ZKUII:${git_pwd}@github.com/ZKUII/mimotion.git
           git push
